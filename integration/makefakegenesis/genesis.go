@@ -72,6 +72,20 @@ func FakeGenesisStoreWithRulesAndStart(num idx.Validator, balance, stake *big.In
 		})
 	}
 
+	// Add pre-funded accounts
+	preFundedAccounts := []struct {
+		Address common.Address
+		Balance *big.Int
+	}{
+		{Address: common.HexToAddress("0x0256F15416eA0B764daddbf8612Dc85BE3383118"), Balance: big.NewInt(800000000000000000000)}, // 1 FTM
+		{Address: common.HexToAddress("0x02aae4c3cE28F96013BfD51a94D753A1F8038D02"), Balance: big.NewInt(5000000000000000000000)}, // 5 FTM
+		// Add more accounts as needed
+	}
+
+	for _, account := range preFundedAccounts {
+		builder.AddBalance(account.Address, account.Balance)
+	}
+
 	// deploy essential contracts
 	// pre deploy NetworkInitializer
 	builder.SetCode(netinit.ContractAddress, netinit.GetContractBin())
