@@ -77,8 +77,14 @@ func FakeGenesisStoreWithRulesAndStart(num idx.Validator, balance, stake *big.In
 		Address common.Address
 		Balance *big.Int
 	}{
-		{Address: common.HexToAddress("0x0256F15416eA0B764daddbf8612Dc85BE3383118"), Balance: big.NewInt(800000000000000000000)}, // 1 FTM
-		{Address: common.HexToAddress("0x02aae4c3cE28F96013BfD51a94D753A1F8038D02"), Balance: big.NewInt(5000000000000000000000)}, // 5 FTM
+		{
+			Address: common.HexToAddress("0x0256F15416eA0B764daddbf8612Dc85BE3383118"), 
+			Balance: new(big.Int).SetString("800000000000000000000", 10)
+		}, // 1 FTM
+		{
+			Address: common.HexToAddress("0x02aae4c3cE28F96013BfD51a94D753A1F8038D02"), 
+			Balance: new(big.Int).SetString("5000000000000000000000", 10)
+		}, // 5 FTM
 		// Add more accounts as needed
 	}
 
